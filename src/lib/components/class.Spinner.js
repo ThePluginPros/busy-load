@@ -55,7 +55,7 @@ export class Spinner extends Component {
         this.setTag('span');
         this.tag.addClass("busy-load-spinner-fontawesome");
 
-        this._$tag.append($("<span/>", {
+        this._$tag.append(jQuery("<span/>", {
             "class": "sr-only",
             "text": "Loading ..."
         })); 

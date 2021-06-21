@@ -150,7 +150,7 @@ var Component = exports.Component = function () {
     }, {
         key: "extendOptions",
         value: function extendOptions(options) {
-            $.extend(this._options, options);
+            jQuery.extend(this._options, options);
         }
 
         /**
@@ -163,7 +163,7 @@ var Component = exports.Component = function () {
             if (tag instanceof jQuery) {
                 this._$tag = tag;
             } else if (typeof tag === 'string' || tag instanceof String) {
-                this._$tag = $("<" + tag + "/>", this._options);
+                this._$tag = jQuery("<" + tag + "/>", this._options);
             } else {
                 throw "wrong type for creating a tag";
             }
@@ -528,13 +528,13 @@ var _defaults2 = _interopRequireDefault(_defaults);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function busyLoadSetup(settings) {
-    $.extend(true, _defaults2.default, settings);
+    jQuery.extend(true, _defaults2.default, settings);
 }
 
 function busyLoad(action, options) {
 
     return this.each(function () {
-        var bl = new _classBusyLoad.BusyLoad($(this), JSON.parse(JSON.stringify(_defaults2.default)), options);
+        var bl = new _classBusyLoad.BusyLoad(jQuery(this), JSON.parse(JSON.stringify(_defaults2.default)), options);
 
         switch (action) {
             case "show":
@@ -551,7 +551,7 @@ function busyLoad(action, options) {
 
 function busyLoadFull(action, options) {
 
-    var $body = $('body');
+    var $body = jQuery('body');
     var bl = new _classBusyLoad.BusyLoad($body, JSON.parse(JSON.stringify(_defaults2.default)), options);
 
     switch (action.toLowerCase()) {
@@ -619,7 +619,7 @@ var BusyLoad = exports.BusyLoad = function () {
     }, {
         key: 'extendSettings',
         value: function extendSettings(options) {
-            $.extend(this._settings, options);
+            jQuery.extend(this._settings, options);
         }
     }, {
         key: 'animateShow',
@@ -627,11 +627,11 @@ var BusyLoad = exports.BusyLoad = function () {
             var _this = this;
 
             var callback = function callback() {
-                return $tag.trigger("bl.shown", [$tag, $(_this.caller)]);
+                return $tag.trigger("bl.shown", [$tag, jQuery(_this.caller)]);
             };
 
             this.caller.append($tag); // already hidden
-            $tag.trigger("bl.show", [$tag, $(this.caller)]);
+            $tag.trigger("bl.show", [$tag, jQuery(this.caller)]);
 
             if (get(this.settings, "animation", false)) {
 
@@ -657,11 +657,11 @@ var BusyLoad = exports.BusyLoad = function () {
             var _this2 = this;
 
             var callback = function callback() {
-                $tag.trigger("bl.hidden", [$tag, $(_this2.caller)]);
+                $tag.trigger("bl.hidden", [$tag, jQuery(_this2.caller)]);
                 $tag.remove();
             };
 
-            $tag.trigger("bl.hide", [$tag, $(this.caller)]);
+            $tag.trigger("bl.hide", [$tag, jQuery(this.caller)]);
 
             if (get(this.settings, "animation", false)) {
                 switch (get(this.settings, "animation").toLowerCase()) {
@@ -683,7 +683,7 @@ var BusyLoad = exports.BusyLoad = function () {
         value: function getOverlay() {
             // already existent?
             if (this._caller.data("busy-load-container")) {
-                return $("#" + this._caller.data("busy-load-container"));
+                return jQuery("#" + this._caller.data("busy-load-container"));
             }
             // no ... create one
             else {
@@ -747,7 +747,7 @@ var BusyLoad = exports.BusyLoad = function () {
         key: 'hide',
         value: function hide() {
             var containerId = this._caller.data('busy-load-container');
-            this.toggle($("#" + containerId), "hide");
+            this.toggle(jQuery("#" + containerId), "hide");
         }
     }, {
         key: 'settings',
@@ -2320,7 +2320,7 @@ var Spinner = exports.Spinner = function (_Component) {
             this.setTag('span');
             this.tag.addClass("busy-load-spinner-fontawesome");
 
-            this._$tag.append($("<span/>", {
+            this._$tag.append(jQuery("<span/>", {
                 "class": "sr-only",
                 "text": "Loading ..."
             }));
@@ -2414,7 +2414,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     _createClass(SpinnerLib, [{
         key: "createCubeGrid",
         value: function createCubeGrid() {
-            this._spinner = $("<div class=\"spinner-cube-grid\"> \n              <div class=\"sk-cube sk-cube1\"></div>\n              <div class=\"sk-cube sk-cube2\"></div>\n              <div class=\"sk-cube sk-cube3\"></div>\n              <div class=\"sk-cube sk-cube4\"></div>\n              <div class=\"sk-cube sk-cube5\"></div>\n              <div class=\"sk-cube sk-cube6\"></div>\n              <div class=\"sk-cube sk-cube7\"></div>\n              <div class=\"sk-cube sk-cube8\"></div>\n              <div class=\"sk-cube sk-cube9\"></div>\n        </div>");
+            this._spinner = jQuery("<div class=\"spinner-cube-grid\"> \n              <div class=\"sk-cube sk-cube1\"></div>\n              <div class=\"sk-cube sk-cube2\"></div>\n              <div class=\"sk-cube sk-cube3\"></div>\n              <div class=\"sk-cube sk-cube4\"></div>\n              <div class=\"sk-cube sk-cube5\"></div>\n              <div class=\"sk-cube sk-cube6\"></div>\n              <div class=\"sk-cube sk-cube7\"></div>\n              <div class=\"sk-cube sk-cube8\"></div>\n              <div class=\"sk-cube sk-cube9\"></div>\n        </div>");
             this._spinner.find(".sk-cube").css({
                 "background-color": get(this._busyLoadOptions, "color", "#333")
             });
@@ -2422,7 +2422,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createCircleLine",
         value: function createCircleLine() {
-            this._spinner = $("<div class=\"spinner-circle-line\">\n              <div class=\"bounce1\"></div>\n              <div class=\"bounce2\"></div>\n              <div class=\"bounce3\"></div>\n        </div>");
+            this._spinner = jQuery("<div class=\"spinner-circle-line\">\n              <div class=\"bounce1\"></div>\n              <div class=\"bounce2\"></div>\n              <div class=\"bounce3\"></div>\n        </div>");
             this._spinner.find(".bounce1, .bounce2, .bounce3").css({
                 "background-color": get(this._busyLoadOptions, "color", "#333")
             });
@@ -2430,7 +2430,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createCircles",
         value: function createCircles() {
-            this._spinner = $("<div class=\"spinner-circles\">\n              <div class=\"dot1\"></div>\n              <div class=\"dot2\"></div>\n        </div>");
+            this._spinner = jQuery("<div class=\"spinner-circles\">\n              <div class=\"dot1\"></div>\n              <div class=\"dot2\"></div>\n        </div>");
             this._spinner.css({
                 "margin-right": "0.4rem"
             }).find(".dot1, .dot2").css({
@@ -2440,7 +2440,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createPump",
         value: function createPump() {
-            this._spinner = $("<div class=\"spinner-pump\">\n            <div class=\"double-bounce1\"></div>\n            <div class=\"double-bounce2\"></div>\n        </div>");
+            this._spinner = jQuery("<div class=\"spinner-pump\">\n            <div class=\"double-bounce1\"></div>\n            <div class=\"double-bounce2\"></div>\n        </div>");
 
             this._spinner.find(".double-bounce1, .double-bounce2").css({
                 "background-color": get(this._busyLoadOptions, "color", "#333"),
@@ -2450,7 +2450,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createPulsar",
         value: function createPulsar() {
-            this._spinner = $("<div class=\"spinner-pulsar\"></div>");
+            this._spinner = jQuery("<div class=\"spinner-pulsar\"></div>");
             this._spinner.css({
                 "background-color": get(this._busyLoadOptions, "color", "#333")
             });
@@ -2458,7 +2458,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createAccordion",
         value: function createAccordion() {
-            this._spinner = $("<div class=\"spinner-accordion\">\n    \t\t  <div class=\"rect1\"></div>\n    \t\t  <div class=\"rect2\"></div>\n    \t\t  <div class=\"rect3\"></div>\n    \t\t  <div class=\"rect4\"></div>\n    \t\t  <div class=\"rect5\"></div>\n    \t\t</div>");
+            this._spinner = jQuery("<div class=\"spinner-accordion\">\n    \t\t  <div class=\"rect1\"></div>\n    \t\t  <div class=\"rect2\"></div>\n    \t\t  <div class=\"rect3\"></div>\n    \t\t  <div class=\"rect4\"></div>\n    \t\t  <div class=\"rect5\"></div>\n    \t\t</div>");
             this._spinner.find("div").css({
                 "background-color": get(this._busyLoadOptions, "color", "#333")
             });
@@ -2466,7 +2466,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createCube",
         value: function createCube() {
-            this._spinner = $("<div class=\"spinner-cube\"></div>");
+            this._spinner = jQuery("<div class=\"spinner-cube\"></div>");
             this._spinner.css({
                 "background-color": get(this._busyLoadOptions, "color", "#333")
             });
@@ -2474,7 +2474,7 @@ var SpinnerLib = exports.SpinnerLib = function () {
     }, {
         key: "createCubes",
         value: function createCubes() {
-            this._spinner = $("<div class=\"spinner-cubes\">  \n            <div class=\"cube1\"></div>\n            <div class=\"cube2\"></div>\n        </div>");
+            this._spinner = jQuery("<div class=\"spinner-cubes\">  \n            <div class=\"cube1\"></div>\n            <div class=\"cube2\"></div>\n        </div>");
 
             this._spinner.css({
                 "margin-right": "0.9rem"

@@ -40,7 +40,7 @@ export class SpinnerLib {
         this._spinner = spinner;
     }
     createCubeGrid() {
-        this._spinner = $(`<div class="spinner-cube-grid"> 
+        this._spinner = jQuery(`<div class="spinner-cube-grid"> 
               <div class="sk-cube sk-cube1"></div>
               <div class="sk-cube sk-cube2"></div>
               <div class="sk-cube sk-cube3"></div>
@@ -56,7 +56,7 @@ export class SpinnerLib {
         });
     }
     createCircleLine() {
-        this._spinner = $(`<div class="spinner-circle-line">
+        this._spinner = jQuery(`<div class="spinner-circle-line">
               <div class="bounce1"></div>
               <div class="bounce2"></div>
               <div class="bounce3"></div>
@@ -66,7 +66,7 @@ export class SpinnerLib {
         });
     }
     createCircles() {
-        this._spinner = $(`<div class="spinner-circles">
+        this._spinner = jQuery(`<div class="spinner-circles">
               <div class="dot1"></div>
               <div class="dot2"></div>
         </div>`); 
@@ -77,7 +77,7 @@ export class SpinnerLib {
         });
     }
     createPump() {
-        this._spinner = $(`<div class="spinner-pump">
+        this._spinner = jQuery(`<div class="spinner-pump">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
         </div>`); 
@@ -88,13 +88,13 @@ export class SpinnerLib {
         });
     }
     createPulsar() {
-        this._spinner = $(`<div class="spinner-pulsar"></div>`);
+        this._spinner = jQuery(`<div class="spinner-pulsar"></div>`);
         this._spinner.css({
             "background-color": get(this._busyLoadOptions, "color","#333") 
         });
     }
     createAccordion() {
-        this._spinner = $(`<div class="spinner-accordion">
+        this._spinner = jQuery(`<div class="spinner-accordion">
     		  <div class="rect1"></div>
     		  <div class="rect2"></div>
     		  <div class="rect3"></div>
@@ -106,13 +106,13 @@ export class SpinnerLib {
         });
     }
     createCube() {
-        this._spinner = $(`<div class="spinner-cube"></div>`);
+        this._spinner = jQuery(`<div class="spinner-cube"></div>`);
         this._spinner.css({
             "background-color": get(this._busyLoadOptions, "color","#333") 
         });
     }
     createCubes() {
-        this._spinner = $(`<div class="spinner-cubes">  
+        this._spinner = jQuery(`<div class="spinner-cubes">  
             <div class="cube1"></div>
             <div class="cube2"></div>
         </div>`);  

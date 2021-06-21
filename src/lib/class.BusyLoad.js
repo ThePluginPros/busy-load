@@ -35,15 +35,15 @@ export class BusyLoad {
     }
 
     extendSettings(options) { 
-        $.extend(this._settings, options);
+        jQuery.extend(this._settings, options);
     }
 
 
     animateShow($tag) {
-        let callback = () => $tag.trigger("bl.shown", [$tag, $(this.caller)]);
+        let callback = () => $tag.trigger("bl.shown", [$tag, jQuery(this.caller)]);
 
         this.caller.append($tag); // already hidden
-        $tag.trigger("bl.show", [$tag, $(this.caller)]);
+        $tag.trigger("bl.show", [$tag, jQuery(this.caller)]);
 
         if (get(this.settings, "animation",  false)) {
 
@@ -62,15 +62,15 @@ export class BusyLoad {
         }
 
         return $tag;
-    } 
+    }
 
     animateHide($tag) { 
         let callback = () => {
-            $tag.trigger("bl.hidden", [$tag, $(this.caller)]);
+            $tag.trigger("bl.hidden", [$tag, jQuery(this.caller)]);
             $tag.remove();
         }
 
-        $tag.trigger("bl.hide", [$tag, $(this.caller)]);
+        $tag.trigger("bl.hide", [$tag, jQuery(this.caller)]);
 
         if (get(this.settings, "animation",  false)) {
             switch (get(this.settings, "animation").toLowerCase()) {
@@ -92,7 +92,7 @@ export class BusyLoad {
     getOverlay() { 
         // already existent?
         if(this._caller.data("busy-load-container")) {
-            return $("#"+this._caller.data("busy-load-container"));
+            return jQuery("#"+this._caller.data("busy-load-container"));
         }
         // no ... create one
         else {
@@ -153,7 +153,7 @@ export class BusyLoad {
 
     hide() { 
         const containerId = this._caller.data('busy-load-container');
-        this.toggle( $("#"+containerId), "hide" ); 
+        this.toggle( jQuery("#"+containerId), "hide" ); 
     }
 
 }

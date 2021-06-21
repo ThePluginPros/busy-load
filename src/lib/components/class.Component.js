@@ -24,7 +24,7 @@ export class Component {
     }
 
     extendOptions(options) { 
-        $.extend(this._options, options);
+        jQuery.extend(this._options, options);
     } 
 
 
@@ -44,7 +44,7 @@ export class Component {
         if (tag instanceof jQuery) { 
             this._$tag = tag;
         } else if (typeof tag === 'string' || tag instanceof String) {
-            this._$tag = $("<" + tag + "/>", this._options);
+            this._$tag = jQuery("<" + tag + "/>", this._options);
         } else {
             throw "wrong type for creating a tag"; 
         }
